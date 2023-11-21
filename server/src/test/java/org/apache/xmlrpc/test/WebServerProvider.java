@@ -57,6 +57,7 @@ public abstract class WebServerProvider extends ClientProviderImpl {
 	protected void initWebServer() throws Exception {
 		if (!isActive) {
 			XmlRpcServer server = webServer.getXmlRpcServer();
+			Silencer.silence(server);
 			server.setHandlerMapping(mapping);
 			XmlRpcServerConfigImpl serverConfig = (XmlRpcServerConfigImpl) server.getConfig();
 			serverConfig.setEnabledForExtensions(true);

@@ -30,17 +30,18 @@ import org.apache.xmlrpc.server.XmlRpcServer;
  * for testing the {@link org.apache.xmlrpc.client.XmlRpcLocalStreamTransport}.
  */
 public class LocalStreamTransportProvider extends LocalTransportProvider {
-    private XmlRpcLocalStreamServer server;
+    private final XmlRpcLocalStreamServer server;
 
     /** Creates a new instance.
 	 * @param pMapping The test servers handler mapping.
 	 */
 	public LocalStreamTransportProvider(XmlRpcHandlerMapping pMapping) {
 		super(pMapping);
+		server = new XmlRpcLocalStreamServer();
+		Silencer.silence(server);
 	}
 
 	protected XmlRpcTransportFactory getTransportFactory(XmlRpcClient pClient) {
-	    server = new XmlRpcLocalStreamServer();
         XmlRpcLocalStreamTransportFactory factory
 			= new XmlRpcLocalStreamTransportFactory(pClient, server);
 		return factory;

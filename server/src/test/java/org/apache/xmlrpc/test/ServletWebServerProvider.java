@@ -60,6 +60,7 @@ public class ServletWebServerProvider extends ClientProviderImpl {
 		servlet = newXmlRpcServlet();
 		webServer = new ServletWebServer(servlet, 0);
 		XmlRpcServer server = servlet.getXmlRpcServletServer();
+		Silencer.silence(server);
 		server.setHandlerMapping(mapping);
 		XmlRpcServerConfigImpl serverConfig = (XmlRpcServerConfigImpl) server.getConfig();
 		serverConfig.setEnabledForExtensions(true);
