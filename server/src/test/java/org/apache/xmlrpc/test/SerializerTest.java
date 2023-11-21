@@ -19,11 +19,7 @@
 package org.apache.xmlrpc.test;
 
 import java.io.StringReader;
-import java.util.Calendar;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.TimeZone;
+import java.util.*;
 
 import javax.xml.parsers.SAXParserFactory;
 
@@ -121,9 +117,9 @@ public class SerializerTest extends TestCase {
 	 * @throws Exception The test failed.
 	 */
 	public void testMapParam() throws Exception {
-		final Map map = new HashMap();
-		map.put("2", new Integer(3));
+		final Map map = new LinkedHashMap();
 		map.put("3", new Integer(5));
+		map.put("2", new Integer(3));
 		final Object[] params = new Object[]{map};
 		XmlRpcStreamRequestConfig config = getConfig();
 		XmlRpcRequest request = new XmlRpcClientRequestImpl(config, "mapParam", params);
