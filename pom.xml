@@ -312,8 +312,8 @@
         <version>2.0.2</version>
         <inherited>true</inherited>
         <configuration>
-          <source>1.3</source>
-          <target>1.2</target>
+          <source>1.8</source>
+          <target>1.8</target>
         </configuration>
       </plugin>
     </plugins>
